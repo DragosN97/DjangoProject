@@ -1,6 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from datetime import datetime
+from books.models import Book
+from rest_framework import viewsets
+from books.serializers import BookSerializers
+
+
 # Create your views here.
 
 fruits = ['Apple', 'Pineapple', 'Durian', 'Passion fruit', 'Banana', 'Pear']
@@ -19,5 +24,12 @@ def home(request):
 
     return render(request, 'home.html', context)
 
+
+
 def about(request):
     return render(request, 'about.html')
+
+
+class BookViewSet(viewsets.ModelViewSet):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializers
