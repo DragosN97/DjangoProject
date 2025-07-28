@@ -1,0 +1,15 @@
+{%extends "base.html" %}}
+
+{% block title %} Those are the numbers {% endblock %}
+{% block content %}
+
+<h1> My Numbers </h1>
+     <ul>
+
+         {% for number in ordered_numbers %}
+             <li>{{ number }}</li>
+         {% endfor %}
+
+     </ul>
+
+{%endblock%}

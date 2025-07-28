@@ -1,4 +1,5 @@
 import json
+from operator import invert
 
 from django.shortcuts import render
 from django.http import HttpResponse, HttpRequest
@@ -89,3 +90,15 @@ def show_ordered_names(request: HttpRequest):
             'ordered_names': names
         }
         return render(request, 'ordered_names.html', context)
+
+
+
+numbers = [73, 28, 95, 14, 61, 39, 87, 5, 46, 32]
+
+def ordered_numbers(request: HttpRequest):
+    if request.method == "GET":
+        numbers.sort(reverse = True)
+        context = {
+            'ordered_numbers': numbers
+        }
+        return render(request, 'ordered_numbers.html', context)
