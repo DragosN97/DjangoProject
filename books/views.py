@@ -73,3 +73,19 @@ def books_view_c(request: HttpRequest):
             return HttpResponse("Book save successfully!")
         else:
             return HttpResponse(form_with_data.errors)
+
+
+names = [
+    "Andrei", "Maria", "Ion", "Elena", "Alexandru", "Ana",
+    "Vasile", "Ioana", "George", "Gabriela", "Florin", "Mihai",
+    "Diana", "Radu", "Laura", "Cristian", "Raluca",
+    "Bianca",
+]
+
+def show_ordered_names(request: HttpRequest):
+    if request.method == "GET":
+        names.sort()
+        context = {
+            'ordered_names': names
+        }
+        return render(request, 'ordered_names.html', context)
